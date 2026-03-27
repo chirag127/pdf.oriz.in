@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("merge-pdf")!;
+const title = "Merge PDF Online — Free & No Upload | OrizPDF";
+const description = "Combine multiple PDF files into one document. Free, fast, and 100% private — all processing happens in your browser.";
+
+const faqs = [
+	{ question: "How many PDFs can I merge at once?", answer: "You can merge as many PDFs as you want in a single operation. There is no limit on the number of files, though very large numbers of files may take longer to process." },
+	{ question: "Will merging reduce the quality of my PDFs?", answer: "No. Merging PDFs preserves the original quality of each page. The process simply combines the page objects from each PDF into a single document without re-compressing images or text." },
+	{ question: "Can I reorder files before merging?", answer: "Yes. After uploading your files, you can drag and drop them to change the merge order. The final PDF will follow the order you set." },
+	{ question: "Does the merged PDF keep bookmarks and links?", answer: "Basic page content, text, and images are preserved. Complex features like bookmarks, form fields, and internal links may not be carried over in the current version." },
+	{ question: "Can I merge password-protected PDFs?", answer: "Currently, password-protected PDFs need to be unlocked first using our Unlock PDF tool before they can be merged." },
+];
+
+const articleContent = `
+<h2>How to Merge PDF Files</h2>
+<p>Merging PDF files is one of the most common document management tasks. Whether you need to combine reports, merge invoices, or consolidate research papers, our free online PDF merger makes it effortless.</p>
+
+<h3>Why Merge PDFs?</h3>
+<p>Combining multiple PDFs into a single document offers several advantages: easier sharing via email, better organization of related documents, reduced clutter in your file system, and professional presentation when submitting combined reports.</p>
+
+<h3>How Our Merger Works</h3>
+<p>Our PDF merger uses the pdf-lib JavaScript library running entirely in your web browser. When you upload files, they are loaded into your browser's memory — never sent to any server. The merger then combines the page objects from each PDF and saves the result as a new file.</p>
+
+<h3>Tips for Best Results</h3>
+<ul>
+<li>Upload PDFs in the order you want them merged, or drag to reorder after uploading</li>
+<li>Each PDF can be a different page size — the merger preserves original dimensions</li>
+<li>For very large files (50MB+), ensure your browser has enough available memory</li>
+<li>Test with a small sample first if you're working with critical documents</li>
+</ul>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/merge-pdf">
+	<ToolHeader
+		toolName={tool.name}
+		toolSlug={tool.slug}
+		category={tool.category}
+		description={tool.description}
+	/>
+
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="MergePDF" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+
+			<div class="lg:col-span-1">
+				<ToolSidebar client:load currentSlug="merge-pdf" />
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import MergePDF from "../../tools/MergePDF";
+
+	const mount = document.getElementById("tool-mount");
+	if (mount) {
+		const root = createRoot(mount);
+		root.render(createElement(MergePDF));
+	}
+</script>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("redact-pdf")!;
+const title = "Redact PDF — Permanently Remove Sensitive Info | OrizPDF";
+const description = "Black out and permanently remove sensitive information from your PDF documents. Ensure redacted content cannot be recovered.";
+
+const faqs = [
+	{ question: "Is redaction permanent?", answer: "Yes, our redaction permanently removes content from the PDF. The information cannot be recovered or revealed." },
+	{ question: "What can I redact?", answer: "You can draw redaction boxes over text, images, or any content you want to permanently remove." },
+	{ question: "Does redaction compress the file?", answer: "Redacted areas are removed from the file, which may slightly reduce file size." },
+];
+
+const articleContent = `
+<h2>Redact PDF Documents</h2>
+<p>Permanently remove sensitive information from your PDFs. Whether you're preparing legal documents, sharing contracts, or archiving records, redaction ensures confidential information stays confidential.</p>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/redact-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="RedactPDF" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-gray-700 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="redact-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import PlaceholderTool from "../../tools/PlaceholderTool";
+	const mount = document.getElementById("tool-mount");
+	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Redact PDF", acceptFormats: [".pdf"], description: "PDF redaction tool is coming soon!" })); }
+</script>

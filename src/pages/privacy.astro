@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Privacy Policy | OrizPDF"
+	description="OrizPDF's privacy policy. Learn how we protect your data — we never upload or store your files. 100% browser-based PDF processing."
+	canonical="/privacy"
+>
+	<section class="bg-gradient-to-br from-slate-50 to-blue-50/30 border-b border-gray-200/60">
+		<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+			<h1 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-2">Privacy Policy</h1>
+			<p class="text-gray-600">Last updated: March 27, 2026</p>
+		</div>
+	</section>
+
+	<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 prose prose-gray max-w-none">
+		<h2>Overview</h2>
+		<p>OrizPDF is committed to protecting your privacy. Our PDF tools are designed with privacy as a core principle — all processing happens entirely in your web browser using WebAssembly and JavaScript. <strong>Your files never leave your device.</strong></p>
+
+		<h2>Data Collection</h2>
+		<p>We do <strong>not</strong> collect, store, or transmit any of the following:</p>
+		<ul>
+			<li>PDF files or documents you process</li>
+			<li>Personal information (no accounts, no registration)</li>
+			<li>Usage analytics or tracking cookies</li>
+			<li>IP addresses or device fingerprints</li>
+		</ul>
+
+		<h2>How Our Tools Work</h2>
+		<p>All PDF operations (merge, split, compress, convert, etc.) run entirely in your browser using client-side JavaScript libraries including pdf-lib, pdfjs-dist, and Tesseract.js. No data is sent to any server for processing.</p>
+
+		<h2>AI Summarizer Exception</h2>
+		<p>The AI Summarizer tool uses <a href="https://puter.com" target="_blank" rel="noopener">Puter.js</a> to provide AI-powered document analysis. When you use this feature:</p>
+		<ul>
+			<li>Text extracted from your PDF is sent to AI models via Puter's API</li>
+			<li>You authenticate with your own free Puter account (we do not store credentials)</li>
+			<li>Puter's own privacy policy governs how AI providers handle your data</li>
+			<li>We do not store or log the text sent to the AI</li>
+		</ul>
+
+		<h2>Cookies</h2>
+		<p>OrizPDF does not use cookies. We may use localStorage to save your theme preference (light/dark mode) if that feature is enabled.</p>
+
+		<h2>Third-Party Services</h2>
+		<p>Our website loads fonts from Google Fonts. This is the only external request made by the core site. No analytics, tracking, or advertising scripts are loaded.</p>
+
+		<h2>Data Security</h2>
+		<p>Since your files never leave your device, the security of your data depends on your own device's security. We recommend keeping your browser and operating system up to date.</p>
+
+		<h2>Children's Privacy</h2>
+		<p>OrizPDF does not knowingly collect information from children under 13. Our tools are available to users of all ages.</p>
+
+		<h2>Changes to This Policy</h2>
+		<p>We may update this privacy policy from time to time. Changes will be reflected on this page with an updated "Last updated" date.</p>
+
+		<h2>Contact</h2>
+		<p>If you have questions about this privacy policy, please contact us at <a href="mailto:privacy@pdf.oriz.in">privacy@pdf.oriz.in</a> or open an issue on our <a href="https://github.com/chirag127/orizpdf" target="_blank" rel="noopener">GitHub repository</a>.</p>
+	</article>
+</BaseLayout>

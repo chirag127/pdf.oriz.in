@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("compress-pdf")!;
+const faqs = [
+	{ question: "How much can I compress my PDF?", answer: "Compression results vary by document. Text-heavy PDFs may see 10-30% reduction, while image-heavy documents can often be reduced by 50% or more." },
+	{ question: "Does compression reduce quality?", answer: "Low and medium compression preserve quality well. High compression may slightly reduce image quality but keeps text sharp and readable." },
+	{ question: "What is the maximum file size I can compress?", answer: "The maximum file size is 100MB. Most typical documents are well under this limit." },
+	{ question: "Can I compress password-protected PDFs?", answer: "You'll need to unlock the PDF first using our Unlock PDF tool, then compress it." },
+	{ question: "Is there a limit on how many times I can compress?", answer: "No, you can compress the same PDF multiple times or process as many different PDFs as you like." },
+];
+---
+<BaseLayout title="Compress PDF Online — Free & No Upload | OrizPDF" description="Reduce PDF file size while preserving quality. Choose from three compression levels. Free, private, browser-based processing." canonical="/tools/compress-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div>
+				<article class="mt-12 prose prose-gray max-w-none"><h2>How to Compress a PDF</h2><p>Large PDF files can be difficult to share via email or upload to websites. Our free PDF compressor reduces file size while maintaining readability and visual quality. Choose from three compression levels depending on your needs.</p><h3>Compression Levels Explained</h3><p><strong>Low:</strong> Minimal compression, best for documents where quality is critical. <strong>Medium:</strong> Balanced compression that works well for most documents. <strong>High:</strong> Maximum compression for when file size matters more than perfect quality.</p><h3>Tips for Better Compression</h3><ul><li>PDFs with many images compress more than text-only documents</li><li>Try medium compression first and adjust if needed</li><li>Very old or complex PDFs may not compress as much</li></ul></article>
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="compress-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import CompressPDF from "../../tools/CompressPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(CompressPDF));</script>

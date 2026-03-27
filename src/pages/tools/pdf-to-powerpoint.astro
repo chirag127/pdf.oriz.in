@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("pdf-to-powerpoint")!;
+const title = "Convert PDF to PowerPoint — Free Online | OrizPDF";
+const description = "Convert PDF pages to PowerPoint slides. Edit and customize your presentations after converting.";
+
+const faqs = [
+	{ question: "Will each PDF page become a slide?", answer: "Yes, each page of your PDF is converted into an individual slide in the PowerPoint presentation." },
+	{ question: "Can I edit the converted slides?", answer: "Yes, the resulting PowerPoint file is fully editable. You can modify text, images, and layout." },
+];
+
+const articleContent = `
+<h2>Convert PDF to PowerPoint</h2>
+<p>Transform your PDF documents into editable PowerPoint presentations. Each PDF page becomes a separate slide you can customize.</p>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/pdf-to-powerpoint">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="PDFToPowerPoint" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="pdf-to-powerpoint" /></div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import PlaceholderTool from "../../tools/PlaceholderTool";
+	const mount = document.getElementById("tool-mount");
+	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Convert to PowerPoint", acceptFormats: [".pdf"], description: "PDF to PowerPoint conversion is coming soon!" })); }
+</script>

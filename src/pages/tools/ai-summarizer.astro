@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("ai-summarizer")!;
+const faqs = [{ question: "How does AI summarization work?", answer: "Text is extracted from your PDF and analyzed by AI to provide key insights." }, { question: "Is it free?", answer: "Uses Puter.js AI with a free account. No cost to you." }];
+---
+<BaseLayout title="AI PDF Summarizer — Free & No Upload | OrizPDF" description="AI-powered PDF analysis and summarization using advanced AI. Extract key insights from any PDF. Free, private." canonical="/tools/ai-summarizer">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>AI-Powered PDF Analysis</h2><p>Let AI analyze your PDF documents and extract key information, summaries, and insights automatically.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="ai-summarizer" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import AISummarizer from "../../tools/AISummarizer"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(AISummarizer));</script>

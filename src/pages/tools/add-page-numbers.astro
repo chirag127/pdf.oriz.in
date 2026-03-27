@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("add-page-numbers")!;
+const faqs = [
+	{ question: "Can I choose where page numbers appear?", answer: "Yes, you can place page numbers in any of 6 positions: top-left, top-center, top-right, bottom-left, bottom-center, or bottom-right." },
+	{ question: "Can I start numbering from a specific number?", answer: "Yes, set any starting number. You can also use 0 if needed." },
+	{ question: "What page number formats are available?", answer: "Choose from simple numbers (1, 2, 3), page with total (1/5, 2/5), or bordered format (- 1 -, - 2 -)." },
+	{ question: "Can I change the font size of page numbers?", answer: "Yes, adjust the font size from 6 to 48 points to match your document's style." },
+	{ question: "Will page numbers overlap with existing content?", answer: "Page numbers are placed at the margin. Use the position options to find a spot that doesn't overlap your content." },
+];
+---
+<BaseLayout title="Add Page Numbers to PDF — Free & No Upload | OrizPDF" description="Insert customizable page numbers into your PDF. Choose position, format, and starting number. Free, private, browser-based." canonical="/tools/add-page-numbers">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div>
+				<article class="mt-12 prose prose-gray max-w-none"><h2>How to Add Page Numbers</h2><p>Page numbers make long documents easier to navigate and reference. Our free tool lets you add customizable page numbers to any PDF in seconds.</p><h3>Page Number Options</h3><p>Choose from 6 positions, 3 formats, and customize the font size. You can start numbering from any number and include the total page count in the format.</p></article>
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="add-page-numbers" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import AddPageNumbers from "../../tools/AddPageNumbers"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(AddPageNumbers));</script>

@@ -1,0 +1,7 @@
+# Cloudflare configuration
+CLOUDFLARE_ACCOUNT_ID = "6a6349fe1568743539433bf10f23ffeb"
+CLOUDFLARE_EMAIL = "whyiswhen@gmail.com"
+CLOUDFLARE_API_TOKEN = "99fe5f342556fb3a1585eefe7bcdb93af0c2c"
+
+[pages]
+project_name = "orizpdf"

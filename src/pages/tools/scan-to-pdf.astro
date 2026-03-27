@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("scan-to-pdf")!;
+const faqs = [{ question: "Does this work on mobile?", answer: "Yes, use your device's camera to scan documents directly." }];
+---
+<BaseLayout title="Scan to PDF Online — Free & No Upload | OrizPDF" description="Use your camera to scan documents directly to PDF. Create PDFs from photos. Free, private, browser-based." canonical="/tools/scan-to-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>Scan Documents to PDF</h2><p>Use your camera to capture documents and create professional PDFs right from your browser.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="scan-to-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import ScanToPDF from "../../tools/ScanToPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(ScanToPDF));</script>

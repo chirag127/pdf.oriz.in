@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("powerpoint-to-pdf")!;
+const title = "Convert PowerPoint to PDF — Free Online | OrizPDF";
+const description = "Convert PowerPoint presentations to PDF format. Keep your slides intact and share easily without requiring PowerPoint software.";
+
+const faqs = [
+	{ question: "What PowerPoint formats are supported?", answer: "We support .pptx files (PowerPoint 2007 and later). Older .ppt files are not currently supported." },
+	{ question: "Will my animations be preserved?", answer: "Animations and transitions are converted to static PDF content. The visual elements remain but motion effects cannot be preserved in PDF format." },
+	{ question: "How are slides sized in the PDF?", answer: "By default, slides are converted to fit standard PDF page sizes. The aspect ratio is preserved to avoid distortion." },
+];
+
+const articleContent = `
+<h2>Convert PowerPoint to PDF</h2>
+<p>Transform your PowerPoint presentations into PDF documents that can be viewed on any device. PDF format ensures your slides look exactly as intended, without requiring PowerPoint software.</p>
+
+<h3>Why Convert to PDF?</h3>
+<p>PDF files are universally compatible and maintain formatting across all devices. Share presentations confidently knowing recipients will see exactly what you intended, without version compatibility issues.</p>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/powerpoint-to-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="PowerPointToPDF" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="powerpoint-to-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import PlaceholderTool from "../../tools/PlaceholderTool";
+	const mount = document.getElementById("tool-mount");
+	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Convert to PDF", acceptFormats: [".pptx"], description: "PowerPoint to PDF conversion is coming soon!" })); }
+</script>

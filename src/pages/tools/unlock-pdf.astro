@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("unlock-pdf")!;
+const faqs = [
+	{ question: "What if I don't know the password?", answer: "You must know the password to unlock a PDF. We cannot bypass password protection without the correct password." },
+	{ question: "Does unlocking remove all restrictions?", answer: "Yes, once unlocked, the PDF will have no password protection, printing restrictions, or copying restrictions." },
+	{ question: "Is the password sent to any server?", answer: "No. All decryption happens in your browser. The password never leaves your device." },
+	{ question: "Can I unlock a PDF with an owner password only?", answer: "If the PDF has an owner password but no user password, it opens without a password. Enter the owner password to remove restrictions." },
+	{ question: "What encryption types are supported?", answer: "We support standard PDF encryption (RC4 and AES) used by most PDF creation tools." },
+];
+---
+<BaseLayout title="Unlock PDF Online — Free & No Upload | OrizPDF" description="Remove password protection from PDF files. Enter the password to unlock and download an unprotected copy. Free, private, browser-based." canonical="/tools/unlock-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Unlock a PDF</h2><p>If you have a password-protected PDF and know the password, our free unlock tool can remove the protection. Simply upload the file, enter the password, and download an unprotected copy.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="unlock-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import UnlockPDF from "../../tools/UnlockPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(UnlockPDF));</script>

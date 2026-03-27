@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("word-to-pdf")!;
+const faqs = [
+	{ question: "What Word formats are supported?", answer: "Only .docx files (Microsoft Word 2007 and later) are supported. Legacy .doc files are not supported." },
+	{ question: "Is formatting preserved?", answer: "Most text formatting is preserved, including fonts, paragraphs, lists, and basic styles. Complex layouts may be simplified." },
+	{ question: "Can I convert multiple Word files at once?", answer: "Currently, only one file at a time is supported. Merge multiple PDFs after converting if needed." },
+	{ question: "What about images in Word?", answer: "Inline images should be preserved in the PDF output." },
+];
+---
+<BaseLayout title="Word to PDF Online — Free & No Upload | OrizPDF" description="Convert DOCX Word documents to PDF format. Fast, free, private — all processing in your browser." canonical="/tools/word-to-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Convert Word to PDF</h2><p>Convert your Microsoft Word (.docx) documents to PDF directly in your browser. No uploads to external servers — everything happens locally on your device.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="word-to-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import WordtoPDF from "../../tools/WordtoPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(WordtoPDF));</script>

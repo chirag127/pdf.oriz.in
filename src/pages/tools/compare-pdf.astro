@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("compare-pdf")!;
+const title = "Compare PDFs — Side-by-Side Diff Tool | OrizPDF";
+const description = "Compare two PDF documents side-by-side. Highlight differences and see exactly what changed between versions.";
+
+const faqs = [
+	{ question: "What differences can be detected?", answer: "Our comparison highlights added, removed, and modified content between two PDFs. Visual differences in layout and text are detected." },
+	{ question: "Can I compare large PDFs?", answer: "Yes, but very large documents may take longer to process. For best results, compare documents of similar length." },
+	{ question: "Is comparison visual or text-based?", answer: "We detect both visual and text-based differences to give you a complete picture of changes." },
+];
+
+const articleContent = `
+<h2>Compare PDF Documents</h2>
+<p>Need to see what changed between two versions of a document? Our PDF comparison tool shows differences side-by-side, making it easy to track revisions.</p>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/compare-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="ComparePDF" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-cyan-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="compare-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import PlaceholderTool from "../../tools/PlaceholderTool";
+	const mount = document.getElementById("tool-mount");
+	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Compare PDFs", acceptFormats: [".pdf"], multiple: true, description: "PDF comparison is coming soon!" })); }
+</script>

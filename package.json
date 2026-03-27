@@ -1,0 +1,61 @@
+{
+  "name": "orizpdf",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Every PDF tool you need. Free. Fast. Private. 30+ browser-based PDF tools.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "astro check",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test": "pnpm run lint && pnpm run typecheck && pnpm run test:unit",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.0.8",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/cloudflare": "^13.1.2",
+
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.5.207",
+    "tesseract.js": "^7.0.0",
+    "mammoth": "^1.12.0",
+    "xlsx": "^0.18.5",
+    "jspdf": "^4.2.1",
+    "html2canvas": "^1.4.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^0.577.0",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2",
+    "playwright": "^1.58.2",
+    "@playwright/test": "^1.58.2",
+    "@biomejs/biome": "^2.4.9",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0"
+  },
+  "pnpm": {
+    "overrides": {}
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  }
+}

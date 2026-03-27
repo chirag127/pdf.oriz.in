@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("split-pdf")!;
+const title = "Split PDF Online — Free & No Upload | OrizPDF";
+const description = "Split PDF files into individual pages or extract specific page ranges. Free, fast, and private — runs entirely in your browser.";
+
+const faqs = [
+	{ question: "Can I split a PDF into individual pages?", answer: "Yes! Select 'Split into single pages' mode and each page of your PDF will become a separate file. You can then download all pages at once." },
+	{ question: "How do I extract a specific range of pages?", answer: "Choose 'Extract page range' mode, enter your start and end page numbers, and click Split. Only those pages will be saved as a new PDF." },
+	{ question: "What does 'Split every N pages' mean?", answer: "This mode divides your PDF into chunks. For example, splitting every 2 pages from a 10-page PDF creates 5 separate 2-page PDFs." },
+	{ question: "Is there a limit on how many pages I can split?", answer: "No, there is no limit. You can split PDFs of any length, though very large documents may take longer to process." },
+	{ question: "Does splitting affect the quality of my PDF?", answer: "No. Splitting preserves the original quality. Each page is copied exactly as-is from the original document." },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/split-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="text-center"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading tool...</p></div></div></div>
+				<article class="mt-12 prose prose-gray max-w-none"><h2>How to Split a PDF</h2><p>Splitting a PDF lets you extract specific pages or divide a large document into smaller, more manageable files. Our free online PDF splitter supports three modes: split into individual pages, extract a page range, or split every N pages.</p><h3>When to Split PDFs</h3><p>Common use cases include extracting a single chapter from an ebook, splitting a multi-invoice document into individual invoices, creating separate files from a scanned batch of documents, or breaking down large files for email attachment limits.</p><h3>How It Works</h3><p>Our splitter loads your PDF directly in your browser using the pdf-lib library. No data is sent to any server. You select your split mode, configure your options, and download the resulting files — all within seconds.</p></article>
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="split-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import SplitPDF from "../../tools/SplitPDF"; const m = document.getElementById("tool-mount"); if (m) { createRoot(m).render(createElement(SplitPDF)); }</script>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="About OrizPDF | Free, Private PDF Tools"
+	description="Learn about OrizPDF — a free, open-source, privacy-first PDF tools platform. All processing runs in your browser. No uploads. No tracking."
+	canonical="/about"
+>
+	<section class="bg-gradient-to-br from-slate-50 to-blue-50/30 border-b border-gray-200/60">
+		<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+			<h1 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-2">About OrizPDF</h1>
+			<p class="text-lg text-gray-600">Free, private, open-source PDF tools for everyone.</p>
+		</div>
+	</section>
+
+	<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 prose prose-gray max-w-none">
+		<h2>Our Mission</h2>
+		<p>OrizPDF was created with a simple belief: <strong>essential PDF tools should be free, fast, and private.</strong> Too many PDF websites upload your files to unknown servers, bombard you with ads, or lock features behind paywalls. We decided to build something different.</p>
+
+		<h2>How It Works</h2>
+		<p>Every tool on OrizPDF runs entirely in your web browser using modern JavaScript libraries and WebAssembly. When you upload a PDF, it never leaves your device — all the processing happens locally. This means:</p>
+		<ul>
+			<li><strong>Complete privacy</strong> — we literally cannot see your files</li>
+			<li><strong>No waiting</strong> — no upload/download round-trip to a server</li>
+			<li><strong>No limits</strong> — process as many files as you want</li>
+			<li><strong>Works offline</strong> — once loaded, tools work without internet</li>
+		</ul>
+
+		<h2>Technology</h2>
+		<p>OrizPDF is built with modern web technologies:</p>
+		<ul>
+			<li><strong>Astro 6</strong> — for blazing-fast static site generation</li>
+			<li><strong>React</strong> — for interactive tool interfaces</li>
+			<li><strong>Tailwind CSS v4</strong> — for beautiful, responsive design</li>
+			<li><strong>pdf-lib</strong> — for PDF creation and manipulation</li>
+			<li><strong>pdfjs-dist</strong> — for PDF rendering and preview</li>
+			<li><strong>Tesseract.js</strong> — for optical character recognition</li>
+			<li><strong>Puter.js</strong> — for AI-powered features</li>
+		</ul>
+
+		<h2>Open Source</h2>
+		<p>OrizPDF is fully open source under the MIT license. You can view the source code, report issues, or contribute on <a href="https://github.com/chirag127/orizpdf" target="_blank" rel="noopener">GitHub</a>.</p>
+
+		<h2>The Creator</h2>
+		<p>OrizPDF is built and maintained by <a href="https://github.com/chirag127" target="_blank" rel="noopener">Chirag</a>, a developer passionate about building useful, privacy-respecting tools for the web.</p>
+
+		<h2>Contact</h2>
+		<p>Got questions, suggestions, or feedback? Reach out:</p>
+		<ul>
+			<li>Email: <a href="mailto:hello@pdf.oriz.in">hello@pdf.oriz.in</a></li>
+			<li>GitHub: <a href="https://github.com/chirag127/orizpdf" target="_blank" rel="noopener">chirag127/orizpdf</a></li>
+		</ul>
+	</article>
+</BaseLayout>

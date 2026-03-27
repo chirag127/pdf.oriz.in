@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("crop-pdf")!;
+const faqs = [
+	{ question: "What are the standard page sizes?", answer: "A4 is 595 x 842 points. US Letter is 612 x 792 points. Use these as reference points for your crop box." },
+	{ question: "Does cropping delete the content outside the crop area?", answer: "No, cropping sets the visible area but the content may still exist in the file. Use our Redact PDF tool to permanently remove content." },
+	{ question: "Can I crop different pages to different sizes?", answer: "Currently, the same crop box is applied to all pages. Support for per-page cropping is coming soon." },
+	{ question: "How do I know what crop values to use?", answer: "Start with conservative values and preview the result. The coordinates are from the bottom-left corner of the page." },
+	{ question: "Can I undo a crop?", answer: "Yes, re-upload the original file and apply a different crop. The original file is never modified." },
+];
+---
+<BaseLayout title="Crop PDF Online — Free & No Upload | OrizPDF" description="Trim page margins and crop PDF content. Set custom crop box dimensions. Free, private, browser-based." canonical="/tools/crop-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Crop a PDF</h2><p>Cropping a PDF lets you trim unwanted margins and focus on the content that matters. Enter the crop box coordinates (X, Y, Width, Height) in points to define the visible area.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="crop-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import CropPDF from "../../tools/CropPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(CropPDF));</script>

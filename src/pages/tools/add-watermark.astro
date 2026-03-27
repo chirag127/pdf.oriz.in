@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("add-watermark")!;
+const faqs = [
+	{ question: "Can I use my own text as a watermark?", answer: "Yes, type any text you want. Common watermarks include 'CONFIDENTIAL', 'DRAFT', 'COPY', and company names." },
+	{ question: "Can I control the watermark's transparency?", answer: "Yes, adjust the opacity from 0 (invisible) to 1 (fully opaque). A value around 0.2-0.4 works well for subtle watermarks." },
+	{ question: "Can I change the watermark's angle?", answer: "Yes, set any rotation angle. -45° is a popular diagonal watermark. Use 0° for horizontal text." },
+	{ question: "Does the watermark appear on every page?", answer: "Yes, the watermark is applied to all pages of the PDF." },
+	{ question: "Can I remove a watermark after adding it?", answer: "Watermarks are permanently embedded. To remove one, you would need to use our redact tool to cover it, though this may affect the underlying content." },
+];
+---
+<BaseLayout title="Add Watermark to PDF — Free & No Upload | OrizPDF" description="Stamp text watermarks on PDF pages. Customize text, size, opacity, and rotation. Free, private, browser-based." canonical="/tools/add-watermark">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div>
+				<article class="mt-12 prose prose-gray max-w-none"><h2>How to Add a Watermark to PDF</h2><p>Watermarks help protect your documents and indicate their status (draft, confidential, etc.). Our free watermark tool lets you add text watermarks with full control over appearance.</p><h3>Watermark Best Practices</h3><ul><li>Use low opacity (0.2-0.3) for subtle watermarks that don't obscure content</li><li>Diagonal watermarks at -45° are the most common professional choice</li><li>Keep watermark text short for better readability</li></ul></article>
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="add-watermark" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import AddWatermark from "../../tools/AddWatermark"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(AddWatermark));</script>

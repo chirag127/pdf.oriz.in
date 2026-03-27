@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("pdf-to-excel")!;
+const title = "Convert PDF to Excel — Free Online | OrizPDF";
+const description = "Extract tables from PDF and convert to editable Excel spreadsheets. Work with your data in a spreadsheet format.";
+
+const faqs = [
+	{ question: "How does table extraction work?", answer: "Our tool detects tabular data in your PDF and converts it to Excel rows and columns. Complex tables may need manual adjustment." },
+	{ question: "Will all tables be extracted?", answer: "Most standard table layouts are detected. Scanned tables need OCR processing first." },
+];
+
+const articleContent = `
+<h2>Convert PDF to Excel</h2>
+<p>Extract tabular data from your PDF documents and convert it to Excel spreadsheets. Work with numbers and data in a format you can analyze and edit.</p>
+`;
+---
+
+<BaseLayout title={title} description={description} canonical="/tools/pdf-to-excel">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2">
+				<div id="tool-mount" data-tool="PDFToExcel" client:load>
+					<div class="flex items-center justify-center min-h-[300px]">
+						<div class="text-center">
+							<div class="size-8 border-2 border-green-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+							<p class="text-sm text-gray-500">Loading tool...</p>
+						</div>
+					</div>
+				</div>
+				<article class="mt-12 prose prose-gray max-w-none" set:html={articleContent} />
+				<ToolFAQ client:load items={faqs} toolName={tool.name} />
+			</div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="pdf-to-excel" /></div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import PlaceholderTool from "../../tools/PlaceholderTool";
+	const mount = document.getElementById("tool-mount");
+	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Convert to Excel", acceptFormats: [".pdf"], description: "PDF to Excel conversion is coming soon!" })); }
+</script>

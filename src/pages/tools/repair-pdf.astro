@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("repair-pdf")!;
+const faqs = [
+	{ question: "What kind of PDF corruption can be repaired?", answer: "Common issues like invalid objects, missing cross-references, and structure problems can often be fixed." },
+	{ question: "Will I lose any content?", answer: "In most cases, content is preserved. Severely corrupted files may lose some data." },
+	{ question: "Does repair work on encrypted PDFs?", answer: "You may need to unlock password-protected PDFs first before repairing." },
+];
+---
+<BaseLayout title="Repair PDF Online — Free & No Upload | OrizPDF" description="Fix corrupted or damaged PDF files. Attempt to recover and repair broken PDFs. Free, private, browser-based." canonical="/tools/repair-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Repair a PDF</h2><p>If your PDF won't open or shows errors, our repair tool attempts to fix common corruption issues by re-parsing and re-saving the document structure.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="repair-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import RepairPDF from "../../tools/RepairPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(RepairPDF));</script>

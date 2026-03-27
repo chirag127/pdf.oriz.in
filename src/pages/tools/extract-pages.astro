@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("extract-pages")!;
+const faqs = [
+	{ question: "What's the difference between extracting and removing pages?", answer: "Extracting creates a new PDF with only the selected pages. Removing deletes pages from the original." },
+	{ question: "Can I extract multiple ranges?", answer: "Currently only one range at a time is supported. Use Split PDF for multiple ranges." },
+];
+---
+<BaseLayout title="Extract Pages from PDF — Free & No Upload | OrizPDF" description="Extract specific pages from PDF into a new file. Select page range to export. Free, private, browser-based." canonical="/tools/extract-pages">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Extract Pages from PDF</h2><p>Pull out specific pages from a PDF to create a new, smaller document. Useful for extracting chapters, sections, or individual pages.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="extract-pages" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import ExtractPages from "../../tools/ExtractPages"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(ExtractPages));</script>

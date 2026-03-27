@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("protect-pdf")!;
+const faqs = [
+	{ question: "What's the difference between user and owner passwords?", answer: "The user password is required to open the PDF. The owner password controls permissions like printing and copying." },
+	{ question: "Can I restrict printing?", answer: "Yes, uncheck 'Allow printing' to prevent recipients from printing the document." },
+	{ question: "What encryption is used?", answer: "We use standard PDF encryption provided by the pdf-lib library." },
+	{ question: "Can I set the same password for both user and owner?", answer: "Yes, if you leave the owner password empty, the user password will be used for both." },
+	{ question: "How do I remove the password later?", answer: "Use our Unlock PDF tool with the correct password to remove protection." },
+];
+---
+<BaseLayout title="Protect PDF with Password — Free & No Upload | OrizPDF" description="Add password protection to your PDF. Set user/owner passwords and permissions. Free, private, browser-based." canonical="/tools/protect-pdf">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Password Protect a PDF</h2><p>Protecting sensitive documents with a password ensures only authorized people can access your content. Our free tool adds strong encryption to your PDF files.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="protect-pdf" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import ProtectPDF from "../../tools/ProtectPDF"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(ProtectPDF));</script>

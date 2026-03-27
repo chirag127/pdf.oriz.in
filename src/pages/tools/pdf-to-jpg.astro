@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ToolHeader from "../../components/tools/ToolHeader.astro";
+import { ToolSidebar } from "../../components/tools/ToolSidebar";
+import { ToolFAQ } from "../../components/tools/ToolFAQ";
+import { getToolBySlug } from "../../data/tools";
+const tool = getToolBySlug("pdf-to-jpg")!;
+const faqs = [
+	{ question: "What resolution are the exported images?", answer: "Images are exported at 2x the PDF page resolution for high quality output." },
+	{ question: "Can I download all pages at once?", answer: "Yes, all pages are automatically downloaded as individual JPG files." },
+	{ question: "What image format is the output?", answer: "Pages are exported as JPG images with 92% quality for a good balance of size and quality." },
+	{ question: "Can I convert just one page?", answer: "Our tool converts all pages. To get a single page, first use Split PDF to extract it, then convert." },
+	{ question: "Is text preserved in the conversion?", answer: "JPG images are raster images. Text is converted to pixels and is no longer selectable or searchable." },
+];
+---
+<BaseLayout title="PDF to JPG Online — Free & No Upload | OrizPDF" description="Convert PDF pages to high-quality JPG images. Each page is saved as a separate image file. Free, private, browser-based." canonical="/tools/pdf-to-jpg">
+	<ToolHeader toolName={tool.name} toolSlug={tool.slug} category={tool.category} description={tool.description} />
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div class="lg:col-span-2"><div id="tool-mount"><div class="flex items-center justify-center min-h-[300px]"><div class="size-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-gray-500">Loading...</p></div></div><article class="mt-12 prose prose-gray max-w-none"><h2>How to Convert PDF to JPG</h2><p>Converting PDF pages to JPG images is useful for sharing on social media, embedding in presentations, or using PDF content in image-based workflows.</p></article><ToolFAQ client:load items={faqs} toolName={tool.name} /></div>
+			<div class="lg:col-span-1"><ToolSidebar client:load currentSlug="pdf-to-jpg" /></div>
+		</div>
+	</div>
+</BaseLayout>
+<script>import { createElement } from "react"; import { createRoot } from "react-dom/client"; import PDFtoJPG from "../../tools/PDFtoJPG"; const m = document.getElementById("tool-mount"); if (m) createRoot(m).render(createElement(PDFtoJPG));</script>

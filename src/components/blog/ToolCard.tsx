@@ -1,11 +1,11 @@
 import { tools } from "../data/tools";
 
 const iconMap: Record<string, string> = {
-  merge: "🔀", split: "✂️", "trash-2": "🗑️", "file-output": "📄",
-  "layout-grid": "📐", scan: "📷", archive: "📦", zap: "⚡",
+  merge: "🔥", split: "✂️", "trash-2": "🗑️", "file-output": "📄",
+  "layout-grid": "📊", scan: "📸", archive: "📦", zap: "⚡",
   wrench: "🔧", search: "🔍", image: "🖼️", "file-text": "📝",
-  presentation: "📊", table: "📊", code: "</>", "shield-check": "🛡️",
-  "rotate-cw": "🔄", hash: "#️⃣", stamp: "⬛", scissors: "✂️",
+  presentation: "📽️", table: "📊", code: "</>", "shield-check": "🛡️",
+  "rotate-cw": "↻", hash: "#️⃣", stamp: "⬛", scissors: "✂️",
   unlock: "🔓", lock: "🔒", "pen-tool": "✍️", "eye-off": "👁️",
   columns: "📄📄", sparkles: "✨",
 };
@@ -16,7 +16,7 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ slug, className = "" }: ToolCardProps) {
-  const tool = tools.find(t => t.slug === slug);
+  const tool = tools.find((t) => t.slug === slug);
   if (!tool) return null;
 
   return (

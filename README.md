@@ -10,6 +10,8 @@
 </div>
 
 > **Every PDF tool you need. Free. Fast. Private.**
+>
+> 🌐 **Website: [https://pdf.oriz.in](https://pdf.oriz.in)**
 
 OrizPDF is a comprehensive, free, open-source PDF tools platform with 30+ tools for merging, splitting, compressing, converting, editing, and securing PDF files. All processing happens 100% in your browser — your files never leave your device.
 
@@ -28,7 +30,7 @@ OrizPDF is a comprehensive, free, open-source PDF tools platform with 30+ tools 
 - [x] Split PDF — Extract pages or split into files
 - [x] Remove Pages — Delete unwanted pages
 - [x] Extract Pages — Pull out specific pages
-- [ ] Organize PDF — Drag-drop page reordering
+- [x] Organize PDF — Drag-drop page reordering
 - [x] Scan to PDF — Use camera to scan documents
 
 ### Optimize PDF
@@ -39,17 +41,17 @@ OrizPDF is a comprehensive, free, open-source PDF tools platform with 30+ tools 
 
 ### Convert to PDF
 - [x] JPG to PDF — Convert images to PDF
-- [ ] Word to PDF — Convert DOCX files
-- [ ] PowerPoint to PDF — Convert PPTX files
+- [x] Word to PDF — Convert DOCX files
+- [x] PowerPoint to PDF — Convert PPTX files
 - [x] Excel to PDF — Convert XLSX files
 - [x] HTML to PDF — Convert HTML to PDF
 
 ### Convert from PDF
 - [x] PDF to JPG — Convert PDF to images
-- [ ] PDF to Word — Convert to DOCX
-- [ ] PDF to PowerPoint — Convert to PPTX
-- [ ] PDF to Excel — Extract tables
-- [ ] PDF to PDF/A — Archival format
+- [x] PDF to Word — Convert to DOCX
+- [x] PDF to PowerPoint — Convert to PPTX
+- [x] PDF to Excel — Extract tables
+- [x] PDF to PDF/A — Archival format
 
 ### Edit PDF
 - [x] Rotate PDF — Rotate pages
@@ -61,8 +63,8 @@ OrizPDF is a comprehensive, free, open-source PDF tools platform with 30+ tools 
 - [x] Unlock PDF — Remove password
 - [x] Protect PDF — Add password
 - [x] Sign PDF — Add signatures
-- [ ] Redact PDF — Black out content
-- [ ] Compare PDF — Side-by-side diff
+- [x] Redact PDF — Black out content
+- [x] Compare PDF — Side-by-side diff
 
 ### AI Tools
 - [x] AI Summarizer — AI-powered analysis

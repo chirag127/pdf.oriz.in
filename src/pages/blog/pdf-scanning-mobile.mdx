@@ -1,0 +1,215 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Scanning Documents to PDF with Your Phone"
+description: "Learn how to scan documents to PDF using your smartphone. Compare the best mobile scanning apps and get tips for producing high-quality scanned PDFs on the go."
+date: "2026-01-23"
+category: "How-To"
+---
+
+import { ToolCard, ToolCardGrid } from "../../components/blog/ToolCard";
+import { TipBox, CallToAction, ComparisonTable, BlogFAQ, StepByStep, StatGrid } from "../../components/blog/BlogComponents";
+
+Gone are the days when you needed a bulky flatbed scanner to digitize documents. Today's smartphones, with their increasingly sophisticated cameras, can produce scanned PDFs that rival dedicated scanning hardware. Whether you need to digitize receipts, contracts, handwritten notes, or official documents, your phone is the only tool you need.
+
+This guide covers everything from capturing the perfect scan to optimizing your PDF output for professional use.
+
+## Why Scan with Your Phone?
+
+<StatGrid stats={[
+  { value: "86%", label: "Of people carry smartphones" },
+  { value: "0", label: "Additional hardware needed" },
+  { value: "< 30s", label: "Time per page scan" },
+  { value: "Anywhere", label: "No location restrictions" }
+]} />
+
+Mobile scanning offers compelling advantages over traditional methods:
+
+- **Always available**: Your phone is always with you
+- **Instant sharing**: Scan and send documents immediately
+- **Cloud integration**: Auto-save to cloud storage services
+- **Cost effective**: No scanner hardware investment needed
+- **Space saving**: No dedicated scanning equipment required
+
+## Choosing a Mobile Scanning App
+
+### Built-in Options
+
+Modern smartphones include basic scanning capabilities:
+
+**iPhone (iOS)**: The Notes app has a built-in document scanner. Open Notes, tap the camera icon, and select "Scan Documents." It automatically detects edges, applies perspective correction, and creates PDFs.
+
+**Android (Google Drive)**: Google Drive includes a scan feature. Tap the + button and select "Scan." It captures documents and saves them as PDFs directly to your Drive.
+
+### Third-Party Apps
+
+For more advanced features, dedicated scanning apps offer superior results:
+
+<ComparisonTable
+  titleA="Built-in Scanner"
+  titleB="Dedicated Apps"
+  rows={[
+    { feature: "Edge detection", a: true, b: true },
+    { feature: "Perspective correction", a: true, b: true },
+    { feature: "OCR text recognition", a: false, b: true },
+    { feature: "Batch scanning", a: false, b: true },
+    { feature: "Color enhancement", a: "Basic", b: "Advanced" },
+    { feature: "Cloud integration", a: "Limited", b: "Extensive" },
+    { feature: "File size optimization", a: false, b: true },
+    { feature: "Annotation tools", a: false, b: true },
+  ]}
+/>
+
+## How to Capture High-Quality Scans
+
+The quality of your scanned PDF depends largely on how you capture the image. Follow these techniques for professional results.
+
+<StepByStep steps={[
+  { title: "Find Good Lighting", description: "Natural, diffused light works best. Avoid harsh shadows and direct overhead lights that create glare. Even lighting across the document is key." },
+  { title: "Use a Flat, Contrasting Surface", description: "Place documents on a flat, non-reflective surface with good contrast. A dark desk or contrasting mat helps apps detect document edges." },
+  { title: "Position Your Phone Directly Above", description: "Hold your phone parallel to the document to minimize perspective distortion. Use both hands for stability, or prop your phone up if possible." },
+  { title: "Let the App Detect Edges", description: "Most scanning apps automatically detect document boundaries. Ensure all four corners are visible and the detection looks accurate before capturing." },
+  { title: "Review and Adjust", description: "Check the captured image for clarity, alignment, and completeness. Rescan if text is blurry, edges are cut off, or lighting is uneven." }
+]} />
+
+## Tips for Better Mobile Scans
+
+### Physical Document Preparation
+
+- **Flatten creases**: Iron or press documents flat before scanning
+- **Remove staples**: They create shadows and uneven surfaces
+- **Clean the lens**: A quick wipe of your phone camera lens prevents haze
+- **Steady surface**: Rest your phone on a stack of books or use a makeshift stand
+
+### Camera Settings
+
+<TipBox title="Camera Tips" type="tip">
+Turn off the flash — it creates glare and uneven lighting. Use the highest resolution your app supports. Enable HDR mode if available for better shadow and highlight detail. Most importantly, hold still or use a timer to avoid motion blur.
+</TipBox>
+
+### Post-Capture Enhancement
+
+After capturing your scan, most apps offer enhancement options:
+
+- **Auto-enhance**: Automatically adjusts contrast and brightness
+- **Black and white**: Best for text documents — improves readability
+- **Color mode**: Preserves color for documents where it matters
+- **Crop and rotate**: Fine-tune the document boundaries
+- **Sharpen**: Clarifies text that may appear slightly soft
+
+## Converting Phone Photos to PDF
+
+If you've already taken photos of documents, you can convert them to proper PDF scans:
+
+<ToolCardGrid slugs={["jpg-to-pdf", "ocr-pdf", "scan-to-pdf"]} />
+
+Our [JPG to PDF converter](/tools/jpg-to-pdf) transforms your phone photos into clean PDF documents. For documents with text you need to search or copy, use [OCR](/tools/ocr-pdf) to extract the text content.
+
+## Organizing Scanned Documents
+
+Once you've scanned your documents, organization is key:
+
+### File Naming Convention
+
+Use a consistent naming pattern:
+
+```
+[Type]_[Description]_[Date].pdf
+```
+
+Examples:
+- `Receipt_CoffeeShop_2026-01-23.pdf`
+- `Contract_VendorAgreement_2026-01.pdf`
+- `Note_MeetingNotes_2026-01-23.pdf`
+
+### Folder Structure
+
+Create a logical folder hierarchy:
+
+```
+Scanned Documents/
+├── Receipts/
+├── Contracts/
+├── Personal/
+├── Medical/
+└── Tax Documents/
+```
+
+### Cloud Storage Tips
+
+- **Auto-backup**: Enable automatic upload to your cloud service
+- **Two locations**: Keep copies in at least two cloud services
+- **Regular organization**: Schedule time weekly to file and name scanned documents
+- **Tagging**: Use metadata tags for cross-category searching
+
+## Multi-Page Document Scanning
+
+For multi-page documents, follow these best practices:
+
+### Batch Scanning Process
+
+1. **Scan all pages first**: Capture every page before making adjustments
+2. **Maintain consistent orientation**: Keep all pages in the same direction
+3. **Check page count**: Verify you've captured every page before combining
+4. **Arrange in order**: Use your app's reorder feature to arrange pages correctly
+5. **Combine into single PDF**: Merge all pages into one document
+
+<ToolCardGrid slugs={["merge-pdf", "organize-pdf", "rotate-pdf"]} />
+
+If you end up with separate image files for each page, use [merge PDF](/tools/merge-pdf) to combine them into a single document. Use [organize PDF](/tools/organize-pdf) to reorder pages or [rotate PDF](/tools/rotate-pdf) to fix orientation.
+
+<TipBox title="Pro Tip" type="info">
+Scan multi-page documents in landscape orientation when possible. This matches the natural orientation of most documents and reduces the need for rotation later. Hold your phone horizontally for wider documents.
+</TipBox>
+
+## Optimizing Scanned PDF File Size
+
+High-resolution scans create large files. Optimize them for sharing and storage:
+
+### Compression Strategies
+
+- **Reduce DPI**: 150-300 DPI is sufficient for most documents
+- **Convert to grayscale**: Black and white scans are much smaller than color
+- **Remove unnecessary pages**: Delete blank or duplicate pages
+- **Use PDF compression**: Dedicated tools can reduce size significantly
+
+<ToolCardGrid slugs={["compress-pdf", "remove-pages", "crop-pdf"]} />
+
+Our [compress PDF tool](/tools/compress-pdf) can reduce your scanned file size by up to 90% without visible quality loss.
+
+<CallToAction
+  title="Convert Photos to PDF"
+  description="Turn your phone photos into professional PDF documents with our free online conversion tool."
+  buttonText="Convert JPG to PDF"
+  href="/tools/jpg-to-pdf"
+/>
+
+## Common Scanning Problems and Solutions
+
+### Blurry Text
+
+**Cause**: Camera shake, poor focus, or low light
+**Solution**: Ensure adequate lighting, hold the phone steady, and let the camera autofocus before capturing
+
+### Shadows and Glare
+
+**Cause**: Uneven lighting or overhead lights
+**Solution**: Move to diffused natural light, avoid direct overhead sources, and tilt the document slightly if needed
+
+### Skewed Pages
+
+**Cause**: Phone not held parallel to document
+**Solution**: Use a scanning app with automatic perspective correction, or manually adjust the crop boundaries
+
+### Large File Sizes
+
+**Cause**: High resolution and color scanning
+**Solution**: Use grayscale mode, reduce DPI, and apply PDF compression
+
+<BlogFAQ items={[
+  { q: "What's the best free scanning app?", a: "The built-in options — Notes on iPhone and Google Drive on Android — handle basic scanning well. For advanced features like OCR and batch scanning, dedicated apps offer more capabilities at various price points." },
+  { q: "What resolution should I scan at?", a: "300 DPI is the sweet spot for most documents. Use 150 DPI for simple text documents where file size matters. Use 600 DPI only for detailed images or small text that needs to be enlarged." },
+  { q: "Can I make scanned text searchable?", a: "Yes. Use OCR (Optical Character Recognition) on your scanned PDFs to convert image-based text into searchable, selectable content. Our OCR tool supports multiple languages and handles both printed and handwritten text." },
+  { q: "How do I scan a document that's larger than my phone screen?", a: "For large documents, scan in sections and merge them into a single PDF. Alternatively, use a scanning app with a panorama or multi-capture mode designed for oversized documents." },
+  { q: "Is mobile scanning secure for sensitive documents?", a: "Ensure you're using a reputable app that processes images locally when possible. Delete photos from your camera roll after converting to PDF. Use password protection on sensitive scanned documents." },
+  { q: "Can I scan documents with handwriting?", a: "Yes. Modern scanning apps and OCR tools can recognize both printed and handwritten text. Results vary based on handwriting clarity, but even moderately legible handwriting can be accurately converted to searchable text." }
+]} />

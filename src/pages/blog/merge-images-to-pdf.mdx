@@ -1,0 +1,186 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "How to Merge Multiple Images into One PDF"
+description: "Step-by-step guide to combining JPG, PNG, and other image formats into a single PDF document. Learn techniques for optimal quality, page sizing, and batch processing."
+date: "2026-02-13"
+category: "How-To"
+---
+
+import { ToolCard, ToolCardGrid } from "../../components/blog/ToolCard";
+import { TipBox, CallToAction, ComparisonTable, BlogFAQ, StepByStep, StatGrid } from "../../components/blog/BlogComponents";
+
+Converting multiple images into a single PDF document is one of the most common PDF tasks. Whether you are scanning receipts, compiling a photo portfolio, creating a digital archive, or assembling a multi-page document from smartphone photos, knowing how to merge images into a well-formatted PDF saves time and produces professional results.
+
+<StatGrid stats={[
+  { value: "JPG/PNG", label: "Most common image formats to convert" },
+  { value: "100+", label: "Images you can combine at once" },
+  { value: "300 DPI", label: "Recommended resolution for print" },
+  { value: "A4/Letter", label: "Standard page sizes for output" }
+]} />
+
+## Why Convert Images to PDF?
+
+Combining images into a PDF offers several advantages over sharing individual image files:
+
+- **Single file distribution**: One PDF is easier to email, upload, and share than dozens of individual images.
+- **Consistent formatting**: PDF preserves the exact layout and quality of your images across all devices and platforms.
+- **Page ordering**: Images appear in a defined sequence, making multi-page documents logical and navigable.
+- **Compression options**: PDF supports multiple compression algorithms, allowing you to reduce file size while maintaining quality.
+- **Print-ready output**: PDF is the standard format for professional printing, ensuring your images print exactly as intended.
+
+<ToolCardGrid slugs={["jpg-to-pdf", "compress-pdf"]} />
+
+## Supported Image Formats
+
+Most PDF conversion tools support a wide range of image formats. Understanding the strengths of each format helps you choose the right source images:
+
+### JPEG (.jpg, .jpeg)
+
+JPEG is the most common image format for photographs. It uses lossy compression, meaning some image data is discarded to reduce file size. JPEG is ideal for photographs and complex images but should be avoided for images containing text, sharp edges, or large areas of solid color.
+
+### PNG (.png)
+
+PNG uses lossless compression, preserving all image data. It supports transparency, making it ideal for logos, screenshots, diagrams, and images with text. PNG files are typically larger than JPEG files but offer superior quality for non-photographic content.
+
+### Other Supported Formats
+
+- **TIFF (.tif)**: High-quality format used in professional photography and scanning
+- **BMP (.bmp)**: Uncompressed bitmap format, resulting in large files
+- **WebP (.webp)**: Modern format with excellent compression and quality
+- **GIF (.gif)**: Limited to 256 colors, suitable for simple graphics
+- **SVG (.svg)**: Vector format that scales without quality loss
+
+<ComparisonTable
+  titleA="JPEG"
+  titleB="PNG"
+  rows={[
+    { feature: "Lossless quality", a: false, b: true },
+    { feature: "Transparency support", a: false, b: true },
+    { feature: "Smaller file size", a: true, b: false },
+    { feature: "Best for photographs", a: true, b: false },
+    { feature: "Best for text/diagrams", a: false, b: true },
+    { feature: "Universal compatibility", a: true, b: true }
+  ]}
+/>
+
+## Step-by-Step: Merging Images into a PDF
+
+<StepByStep steps={[
+  { title: "Gather and organize your images", description: "Collect all images you want to include. Rename them with numbered prefixes (01-receipt.jpg, 02-receipt.jpg) to control the order they appear in the final PDF." },
+  { title: "Choose your page size and orientation", description: "Decide whether your output should be Letter, A4, or a custom size. Choose portrait or landscape orientation based on the majority of your images." },
+  { title: "Set image resolution and quality", description: "For print documents, target 300 DPI. For screen-only documents, 150 DPI is sufficient. Higher resolution means better quality but larger file size." },
+  { title: "Upload or select your images", description: "Use a reliable PDF conversion tool. Upload your images in the order you want them to appear." },
+  { title: "Adjust layout and margins", description: "Configure how images fit on each page. Options typically include fit-to-page, fill-page, and custom margins." },
+  { title: "Generate and verify the PDF", description: "Review the output to ensure images appear in the correct order, orientation is appropriate, and quality meets your standards." }
+]} />
+
+## Choosing the Right Page Layout
+
+How your images fit on each PDF page significantly affects the final document's appearance and usability. Here are the main layout options:
+
+### Fit to Page
+
+The image is scaled to fit entirely within the page boundaries, preserving its aspect ratio. If the image proportions differ from the page, white margins will appear on the sides or top and bottom. This layout ensures the entire image is visible.
+
+### Fill Page
+
+The image is scaled to fill the entire page, preserving aspect ratio. If the image proportions differ from the page, portions of the image may be cropped. This layout eliminates white space but may cut off important content.
+
+### Actual Size
+
+The image is placed at its original pixel dimensions without scaling. A 1200x800 pixel image at 300 DPI will appear as 4x2.67 inches on the page. This option preserves exact image quality but can result in very small or very large images.
+
+### Custom Margins
+
+Specify exact margin sizes (top, bottom, left, right) to control how much white space surrounds each image. This is useful for creating documents with consistent framing.
+
+<TipBox type="tip" title="Orientation Matching">
+For the best results, use images that match your chosen page orientation. Portrait images work best on portrait pages, and landscape images on landscape pages. If your images have mixed orientations, consider creating separate PDFs and merging them, or use automatic orientation detection.
+</TipBox>
+
+## Controlling Image Quality and File Size
+
+The balance between image quality and file size is the most important consideration when merging images into a PDF. Here are the key factors:
+
+### Resolution (DPI)
+
+Resolution determines how many pixels per inch are included in the output. Higher DPI means sharper images but larger files.
+
+- **72 DPI**: Screen only, smallest file size
+- **150 DPI**: Good for on-screen reading and casual printing
+- **300 DPI**: Standard for professional printing
+- **600 DPI**: High-quality printing, very large files
+
+### Compression Level
+
+When saving images as JPEG within a PDF, you can choose the compression quality. Most tools offer a scale from 1-100 or Low/Medium/High:
+
+- **60-70%**: Noticeable compression artifacts, smallest files
+- **75-85%**: Good balance of quality and size
+- **90-100%**: Minimal compression, largest files
+
+For most purposes, 80-85% JPEG quality provides the best balance.
+
+<ToolCardGrid slugs={["jpg-to-pdf", "optimize-pdf"]} />
+
+## Batch Processing: Converting Many Images at Once
+
+When you have dozens or hundreds of images to convert, batch processing saves significant time. Here are strategies for efficient batch conversion:
+
+### Naming Conventions
+
+Use a consistent naming scheme with numeric prefixes to control ordering:
+- `001-scan.jpg`, `002-scan.jpg`, `003-scan.jpg`
+- `chapter-01-page-01.png`, `chapter-01-page-02.png`
+
+### Folder Organization
+
+Group related images into folders. Some tools can process entire folders at once, converting each folder into a separate PDF or combining all images from multiple folders into one document.
+
+### Command-Line Processing
+
+For advanced users, command-line tools can automate image-to-PDF conversion with scripts that process entire directories, apply consistent settings, and generate output files with meaningful names.
+
+## Handling Special Cases
+
+### Images with Transparency
+
+PNG images with transparent backgrounds will render with white backgrounds in PDF, since PDF pages do not support transparency. If you need transparency preserved (for overlay effects, for example), you will need to flatten the image against a colored background before conversion.
+
+### Very Large Images
+
+Images exceeding 200 megapixels may cause memory issues during conversion. Resize extremely large images to a reasonable resolution before merging. A 300 DPI image at A4 size only requires about 8.7 megapixels.
+
+### Mixed Aspect Ratios
+
+When combining portrait and landscape images, use automatic orientation detection if your tool supports it. Otherwise, rotate landscape images to portrait before conversion, or create separate orientation-specific PDFs and merge them.
+
+<CallToAction
+  title="Convert Your Images to PDF Now"
+  description="Upload your JPG, PNG, TIFF, or other image files and combine them into a single professional PDF document."
+  buttonText="Convert Images to PDF"
+  href="/tools/jpg-to-pdf"
+/>
+
+## Common Issues and Solutions
+
+### Images Appear Blurry
+
+Blurry images usually result from excessive compression or insufficient resolution. Increase the quality setting to 85% or higher and ensure your source images have adequate resolution for the target page size.
+
+### Incorrect Page Order
+
+If images appear in the wrong order, check your file naming. Most tools process files alphabetically or in the order they were selected. Using numeric prefixes ensures correct ordering.
+
+### File Size Too Large
+
+Large file sizes typically come from uncompressed or lightly compressed images. Apply JPEG compression at 80-85% quality, downsample to the appropriate DPI, and consider splitting extremely large documents into multiple files.
+
+<BlogFAQ items={[
+  { q: "How many images can I combine into a single PDF?", a: "Most tools support combining 100 or more images in a single operation. The practical limit depends on your available memory and the tool you are using. For very large collections, consider batch processing in groups." },
+  { q: "What is the best image format to use as a source?", a: "JPEG is best for photographs due to its efficient compression. PNG is best for screenshots, diagrams, and images with text due to its lossless quality. TIFF provides the highest quality but results in very large files." },
+  { q: "Can I mix different image formats in one PDF?", a: "Yes. PDF can contain images in different formats within the same document. Each image is compressed independently using the most appropriate algorithm for its content." },
+  { q: "How do I maintain the original image quality?", a: "Use lossless compression, set the DPI to match or exceed the source image resolution, and choose 'Actual Size' or 'Fit to Page' layout options. Avoid aggressive JPEG compression." },
+  { q: "Can I add page numbers or text to my image-based PDF?", a: "Yes, after converting images to PDF, you can add page numbers, watermarks, headers, and footers using PDF editing tools. This is useful for creating professional documents from scanned pages." },
+  { q: "Will the PDF look the same on all devices?", a: "Yes. One of the primary advantages of PDF is consistent rendering across all platforms. The images will appear exactly the same on Windows, macOS, Linux, iOS, and Android devices." }
+]} />

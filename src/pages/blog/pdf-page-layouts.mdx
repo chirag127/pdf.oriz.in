@@ -1,0 +1,219 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "PDF Page Layouts: Portrait, Landscape & Custom Sizes"
+description: "Master PDF page layouts including portrait, landscape, and custom dimensions. Learn how to set, change, and optimize page sizes for any document purpose."
+date: "2026-02-12"
+category: "How-To"
+---
+
+import { ToolCard, ToolCardGrid } from "../../components/blog/ToolCard";
+import { TipBox, CallToAction, ComparisonTable, BlogFAQ, StepByStep, StatGrid } from "../../components/blog/BlogComponents";
+
+Page layout is one of the most fundamental aspects of PDF document design. Whether you are creating a business report, a marketing brochure, an architectural drawing, or a digital form, the size and orientation of your pages determine how content is organized, how it prints, and how readers experience the document. Understanding PDF page layouts empowers you to create documents that look professional and function flawlessly.
+
+<StatGrid stats={[
+  { value: "210×297mm", label: "A4 page dimensions (portrait)" },
+  { value: "8.5×11in", label: "US Letter dimensions" },
+  { value: "90°", label: "Rotation between portrait and landscape" },
+  { value: "200+", label: "Standard paper sizes available worldwide" }
+]} />
+
+## Understanding Page Orientation
+
+Page orientation refers to the direction in which a page is oriented. The two standard orientations are portrait and landscape, and the choice between them depends on the type of content you are presenting.
+
+### Portrait Orientation
+
+Portrait orientation is taller than it is wide, matching the natural orientation of most printed documents. It is the default for letters, reports, books, essays, and most business documents. Portrait layout works best for text-heavy content, narrow tables, and vertically-oriented images.
+
+### Landscape Orientation
+
+Landscape orientation is wider than it is tall. It is ideal for wide tables, charts, diagrams, presentations, photographs, and any content that benefits from a horizontal format. Landscape is also commonly used for certificates, calendars, and spreadsheets.
+
+<ComparisonTable
+  titleA="Portrait"
+  titleB="Landscape"
+  rows={[
+    { feature: "Best for text documents", a: true, b: false },
+    { feature: "Best for wide tables/charts", a: false, b: true },
+    { feature: "Default for most printers", a: true, b: false },
+    { feature: "Ideal for presentations", a: false, b: true },
+    { feature: "Standard book format", a: true, b: false },
+    { feature: "Best for panoramic images", a: false, b: true }
+  ]}
+/>
+
+<ToolCardGrid slugs={["rotate-pdf", "crop-pdf"]} />
+
+## Standard Paper Sizes
+
+Different regions and industries use different standard paper sizes. Understanding these standards ensures your PDFs print correctly on any printer worldwide.
+
+### ISO 216 (A Series)
+
+The ISO 216 standard is used in most countries outside of North America. The A series is based on a consistent aspect ratio of 1:√2 (approximately 1:1.414). This mathematical relationship means that scaling between sizes is seamless—two A4 pages side by side equal one A3 page.
+
+**Common ISO A sizes:**
+- **A0**: 841 × 1189 mm — posters, architectural drawings
+- **A1**: 594 × 841 mm — large charts, technical drawings
+- **A2**: 420 × 594 mm — medium posters, diagrams
+- **A3**: 297 × 420 mm — spreadsheets, small posters
+- **A4**: 210 × 297 mm — standard documents, letters
+- **A5**: 148 × 210 mm — booklets, notepads
+- **A6**: 105 × 148 mm — postcards, pocket notebooks
+
+### North American Sizes
+
+The United States, Canada, and parts of Mexico use a different set of paper sizes based on inches rather than millimeters.
+
+**Common North American sizes:**
+- **Letter**: 8.5 × 11 inches — standard US document size
+- **Legal**: 8.5 × 14 inches — contracts, legal documents
+- **Tabloid/ Ledger**: 11 × 17 inches — newsletters, large tables
+- **Executive**: 7.25 × 10.5 inches — personal documents, stationery
+
+### Industry-Specific Sizes
+
+Some industries use specialized sizes:
+
+- **Business Card**: 3.5 × 2 inches (US) or 85 × 55 mm (ISO)
+- **Envelope #10**: 4.125 × 9.5 inches
+- **Photo 4×6**: 4 × 6 inches
+- **Photo 5×7**: 5 × 7 inches
+
+<StepByStep steps={[
+  { title: "Determine your document purpose", description: "Identify whether the document is for screen viewing, printing, or both. This determines your target resolution and size requirements." },
+  { title: "Select the appropriate standard size", description: "Choose A4 or Letter for general documents, Legal for contracts, A3 or Tabloid for wide content, or a custom size for specialized needs." },
+  { title: "Set the page orientation", description: "Use portrait for text-heavy documents and landscape for charts, presentations, and wide content. Some documents may mix both orientations." },
+  { title: "Configure margins and bleed", description: "Set margins appropriate for your content. Professional printing requires a 3mm bleed area extending beyond the trim edge." },
+  { title: "Verify the output", description: "Print a test page or view the PDF at actual size to confirm that content fits correctly and nothing is cut off." }
+]} />
+
+## Custom Page Sizes
+
+Not every document fits a standard page size. Custom sizes are essential for:
+
+- **Marketing materials**: Postcards, flyers, and brochures in non-standard dimensions
+- **Digital displays**: Documents optimized for specific screen sizes
+- **Packaging**: Product inserts, labels, and box designs
+- **Art prints**: Custom dimensions matching the artwork's aspect ratio
+- **Banners and signs**: Very wide or very tall formats
+
+### Setting Custom Dimensions
+
+When creating custom-sized PDFs, specify dimensions in either millimeters or inches. Common custom sizes include:
+
+- **DL (Dimension Lengthwise)**: 99 × 210 mm — fits a DL envelope, used for flyers and invitations
+- **B5**: 176 × 250 mm — intermediate size between A4 and A5, used for books
+- **Half Letter**: 5.5 × 8.5 inches — US half-sheet format
+- **Statement**: 5.5 × 8.5 inches — same as Half Letter
+
+<TipBox type="tip" title="Aspect Ratio Matters">
+When creating custom page sizes, consider the aspect ratio. The ISO 216 standard's 1:√2 ratio ensures consistent scaling. Custom ratios may require manual adjustment when scaling content between sizes.
+</TipBox>
+
+## Multi-Layout Documents
+
+Many professional documents use multiple page layouts within a single PDF. A report might have portrait text pages interspersed with landscape charts, or a presentation might combine slides with speaker notes on differently-sized pages.
+
+### Mixing Orientations
+
+Modern PDF supports different orientations on different pages within the same document. This is particularly useful for:
+
+- Annual reports with portrait text sections and landscape financial tables
+- Technical manuals with portrait instructions and landscape diagrams
+- Photo books with alternating portrait and landscape photographs
+
+### How PDF Stores Page Dimensions
+
+Each page in a PDF has its own MediaBox, which defines the dimensions of the page. PDF also supports additional box definitions:
+
+- **MediaBox**: The full page size, including all content and margins
+- **CropBox**: The visible area when the page is displayed or printed
+- **BleedBox**: The area that extends beyond the trim edge for professional printing
+- **TrimBox**: The final intended page size after trimming
+- **ArtBox**: The area containing the meaningful content
+
+<ToolCardGrid slugs={["crop-pdf", "rotate-pdf"]} />
+
+## Page Layout for Print vs. Screen
+
+The intended output medium significantly affects your page layout choices.
+
+### Print-Optimized Layouts
+
+For documents destined for the printer:
+
+- Use standard paper sizes (A4, Letter) to ensure compatibility with all printers
+- Include 3mm bleed for documents with edge-to-edge color or images
+- Set appropriate margins to avoid content being cut off during printing
+- Use CMYK color space for accurate color reproduction
+- Target 300 DPI resolution for crisp output
+
+### Screen-Optimized Layouts
+
+For documents that will only be viewed on screens:
+
+- Consider widescreen aspect ratios (16:9, 16:10) for presentations
+- Use smaller page sizes to reduce file size and scrolling
+- Optimize for 150 DPI since screens cannot display higher resolution
+- Use RGB color space for vibrant on-screen colors
+- Consider responsive layouts that adapt to different screen sizes
+
+<ComparisonTable
+  titleA="Print Layout"
+  titleB="Screen Layout"
+  rows={[
+    { feature: "Standard paper sizes", a: true, b: false },
+    { feature: "Widescreen aspect ratios", a: false, b: true },
+    { feature: "300 DPI resolution", a: true, b: false },
+    { feature: "150 DPI resolution", a: false, b: true },
+    { feature: "CMYK color space", a: true, b: false },
+    { feature: "RGB color space", a: false, b: true },
+    { feature: "Bleed area required", a: true, b: false }
+  ]}
+/>
+
+## Changing Page Layouts in Existing PDFs
+
+Sometimes you need to change the layout of an existing PDF—rotating pages, resizing, or adjusting margins. Here are the common operations:
+
+### Rotating Pages
+
+Page rotation changes the orientation of individual pages without altering the content. PDF supports 90°, 180°, and 270° rotations. Rotating a portrait page 90° clockwise transforms it into landscape orientation.
+
+### Resizing Pages
+
+Changing page dimensions requires scaling or cropping the content to fit the new size. This operation may affect text readability and image quality if significant size changes are involved.
+
+### Adjusting Margins
+
+Some PDF tools allow you to change the visible page area (CropBox) without altering the underlying content. This effectively adjusts margins without reflowing text or rescaling images.
+
+<CallToAction
+  title="Adjust Your PDF Page Layout"
+  description="Rotate, crop, and resize your PDF pages with our free online tools. Perfect orientation and dimensions every time."
+  buttonText="Adjust PDF Pages"
+  href="/tools/rotate-pdf"
+/>
+
+## Accessibility Considerations
+
+Page layout affects document accessibility. Large page sizes may require horizontal scrolling on assistive devices, and unusual aspect ratios can cause navigation difficulties.
+
+### Accessibility Best Practices
+
+- Use standard page sizes to ensure compatibility with screen readers
+- Maintain consistent page dimensions throughout the document
+- Use sufficient font sizes (minimum 12pt for body text)
+- Ensure adequate contrast between text and background
+- Tag the PDF structure for assistive technology navigation
+
+<BlogFAQ items={[
+  { q: "What is the most common PDF page size?", a: "A4 (210 × 297 mm) is the most common worldwide, while US Letter (8.5 × 11 inches) is standard in the United States and Canada. For international distribution, A4 is the safest choice." },
+  { q: "Can I have different page sizes in the same PDF?", a: "Yes. PDF supports different page dimensions within a single document. Each page has its own MediaBox defining its size, so you can mix portrait, landscape, and custom sizes freely." },
+  { q: "How do I change the orientation of specific pages in a PDF?", a: "Use a PDF rotation tool to rotate individual pages by 90°, 180°, or 270°. This changes the display orientation without modifying the underlying content." },
+  { q: "What page size should I use for a PDF that will only be viewed on screen?", a: "For screen-only documents, consider using a smaller size like A5 or a widescreen format (16:9 aspect ratio). This reduces file size and improves the on-screen viewing experience." },
+  { q: "What is bleed and when do I need it?", a: "Bleed is an extra margin (typically 3mm) that extends beyond the final trim edge. It is required for professional printing when content (color, images) extends to the edge of the page, ensuring no white borders appear after trimming." },
+  { q: "How do I choose between A4 and Letter size?", a: "Use A4 for international audiences and Letter for US/Canadian audiences. The sizes are similar enough that most documents work in either format, but A4 is slightly narrower and taller than Letter." }
+]} />

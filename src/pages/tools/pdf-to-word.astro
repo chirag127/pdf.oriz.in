@@ -10,9 +10,9 @@ const title = "Convert PDF to Word — Free Online | OrizPDF";
 const description = "Extract text from PDF and convert to editable Word documents. Keep formatting and edit your content in Word.";
 
 const faqs = [
-	{ question: "Will formatting be preserved?", answer: "Basic formatting like paragraphs, tables, and basic styling is preserved. Complex layouts may require minor adjustments in Word." },
+	{ question: "Will formatting be preserved?", answer: "Basic formatting like paragraphs and line structure is preserved. Complex layouts may require minor adjustments in Word." },
 	{ question: "Can I convert scanned PDFs?", answer: "Scanned PDFs require OCR. Use our OCR PDF tool first to make scanned documents searchable, then convert to Word." },
-	{ question: "Are images preserved?", answer: "Images embedded in the PDF are extracted and placed in the Word document where possible." },
+	{ question: "Are images preserved?", answer: "This tool focuses on text extraction. For image-rich documents, consider using PDF to JPG for visual conversion." },
 ];
 
 const articleContent = `
@@ -26,7 +26,7 @@ const articleContent = `
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 			<div class="lg:col-span-2">
-				<div id="tool-mount" data-tool="PDFToWord" client:load>
+				<div id="tool-mount">
 					<div class="flex items-center justify-center min-h-[300px]">
 						<div class="text-center">
 							<div class="size-8 border-2 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
@@ -45,7 +45,10 @@ const articleContent = `
 <script>
 	import { createElement } from "react";
 	import { createRoot } from "react-dom/client";
-	import PlaceholderTool from "../../tools/PlaceholderTool";
+	import PDFToWord from "../../tools/PDFToWord";
+
 	const mount = document.getElementById("tool-mount");
-	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Convert to Word", acceptFormats: [".pdf"], description: "PDF to Word conversion is coming soon!" })); }
+	if (mount) {
+		createRoot(mount).render(createElement(PDFToWord));
+	}
 </script>

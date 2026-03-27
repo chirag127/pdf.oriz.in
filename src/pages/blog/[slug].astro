@@ -1,0 +1,159 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+export function getStaticPaths() {
+  const posts = [
+    { slug: "how-to-merge-pdf-files", title: "How to Merge PDF Files: Complete Guide for 2026", date: "2026-03-27", category: "How-To", description: "Learn how to combine multiple PDFs into one document quickly and privately. Step-by-step guide with tips and best practices." },
+    { slug: "best-free-pdf-tools-2026", title: "The 10 Best Free PDF Tools in 2026", date: "2026-03-26", category: "Reviews", description: "Compare the top free PDF tools available today. Find the perfect solution for merging, splitting, and editing PDFs." },
+    { slug: "reduce-pdf-file-size", title: "How to Reduce PDF File Size Without Losing Quality", date: "2026-03-25", category: "How-To", description: "Compress your PDFs efficiently while maintaining visual quality. Tips for different use cases and file types." },
+    { slug: "pdf-security-guide", title: "Complete Guide to PDF Security: Passwords, Encryption & Protection", date: "2026-03-24", category: "Security", description: "Everything you need to know about protecting your PDF documents from unauthorized access." },
+    { slug: "convert-word-to-pdf", title: "How to Convert Word to PDF: Fast & Free Methods", date: "2026-03-23", category: "How-To", description: "Multiple methods to convert your DOCX files to PDF format while preserving formatting." },
+    { slug: "pdf-for-business", title: "Why PDF Is the Gold Standard for Business Documents", date: "2026-03-22", category: "Business", description: "Explore why PDF remains the preferred format for contracts, invoices, and official communications." },
+    { slug: "split-pdf-pages", title: "How to Split PDF Pages: Extract, Delete & Organize", date: "2026-03-21", category: "How-To", description: "Learn different ways to split PDFs into separate files or extract specific pages." },
+    { slug: "ocr-pdf-guide", title: "OCR for PDFs: How to Make Scanned Documents Searchable", date: "2026-03-20", category: "Technology", description: "Understand Optical Character Recognition and how to use it to make your scanned PDFs searchable and editable." },
+    { slug: "pdf-accessibility", title: "Making PDFs Accessible: A Complete Guide", date: "2026-03-19", category: "Accessibility", description: "Learn how to create and verify accessible PDF documents that everyone can use." },
+    { slug: "compare-pdf-documents", title: "How to Compare Two PDF Documents Side by Side", date: "2026-03-18", category: "How-To", description: "Tools and techniques for comparing different versions of PDF documents efficiently." },
+    { slug: "pdf-vs-google-docs", title: "PDF vs Google Docs: When to Use Each Format", date: "2026-03-17", category: "Comparison", description: "Understand the strengths and weaknesses of PDF and Google Docs for different use cases." },
+    { slug: "add-watermark-to-pdf", title: "How to Add Watermarks to PDF Documents", date: "2026-03-16", category: "How-To", description: "Add text or image watermarks to your PDFs for branding or confidentiality." },
+    { slug: "pdf-compression-tips", title: "10 PDF Compression Tips That Actually Work", date: "2026-03-15", category: "Tips", description: "Expert tips for reducing PDF file sizes without sacrificing quality." },
+    { slug: "pdf-metadata-explained", title: "PDF Metadata Explained: What It Is and How to Use It", date: "2026-03-14", category: "Technology", description: "Understand PDF metadata, how it works, and why it matters for your documents." },
+    { slug: "digital-signatures-pdf", title: "Digital Signatures in PDFs: A Complete Guide", date: "2026-03-13", category: "Security", description: "Everything about adding and verifying digital signatures in PDF documents." },
+    { slug: "pdf-forms-guide", title: "Creating and Filling PDF Forms: Complete Guide", date: "2026-03-12", category: "How-To", description: "Learn how to create interactive PDF forms and fill them out efficiently." },
+    { slug: "pdf-workflow-automation", title: "Automating Your PDF Workflow: Tips for Productivity", date: "2026-03-11", category: "Productivity", description: "Streamline your document management with these PDF workflow automation tips." },
+    { slug: "pdf-fonts-embedding", title: "PDF Fonts: Embedding, Substitution & Best Practices", date: "2026-03-10", category: "Technology", description: "Understanding font handling in PDFs and how to ensure consistent rendering." },
+    { slug: "jpg-to-pdf-conversion", title: "How to Convert Images to PDF: JPG, PNG, WebP", date: "2026-03-09", category: "How-To", description: "Convert any image format to PDF with custom layouts and quality settings." },
+    { slug: "pdf-page-numbers", title: "How to Add Page Numbers to PDF Documents", date: "2026-03-08", category: "How-To", description: "Add professional page numbers to your PDFs with customizable formatting." },
+    { slug: "crop-pdf-pages", title: "How to Crop PDF Pages and Remove Margins", date: "2026-03-07", category: "How-To", description: "Remove unwanted margins and crop content from your PDF pages." },
+    { slug: "pdf-rotation-guide", title: "Rotating PDF Pages: A Complete Guide", date: "2026-03-06", category: "How-To", description: "Learn how to rotate individual pages or entire PDF documents." },
+    { slug: "protect-pdf-files", title: "How to Password Protect PDF Files", date: "2026-03-05", category: "Security", description: "Add password protection and permission restrictions to your PDFs." },
+    { slug: "unlock-pdf-files", title: "How to Remove Password Protection from PDFs", date: "2026-03-04", category: "Security", description: "Methods for unlocking password-protected PDF documents you own." },
+    { slug: "extract-pages-from-pdf", title: "How to Extract Specific Pages from a PDF", date: "2026-03-03", category: "How-To", description: "Pull out individual pages or page ranges from PDF documents." },
+    { slug: "remove-pages-from-pdf", title: "How to Remove Pages from a PDF Document", date: "2026-03-02", category: "How-To", description: "Delete unwanted pages from your PDF files quickly and easily." },
+    { slug: "pdf-vs-word", title: "PDF vs Word: Which Format Should You Use?", date: "2026-03-01", category: "Comparison", description: "Compare PDF and Word formats to choose the right one for your needs." },
+    { slug: "redact-sensitive-pdf", title: "How to Redact Sensitive Information from PDFs", date: "2026-02-28", category: "Security", description: "Safely remove confidential content from PDF documents permanently." },
+    { slug: "pdf-for-education", title: "PDF in Education: A Teacher's Complete Guide", date: "2026-02-27", category: "Education", description: "How educators can leverage PDF tools for teaching and learning." },
+    { slug: "pdf-and-ai", title: "How AI Is Transforming PDF Document Processing", date: "2026-02-26", category: "Technology", description: "Explore the intersection of artificial intelligence and PDF technology." },
+    { slug: "pdf-repair-guide", title: "How to Repair Corrupted or Damaged PDF Files", date: "2026-02-25", category: "How-To", description: "Methods for fixing corrupted PDFs and recovering document content." },
+    { slug: "pdf-archive-format", title: "PDF/A: The Archival Format for Long-Term Preservation", date: "2026-02-24", category: "Technology", description: "Understanding PDF/A and why it matters for document archival." },
+    { slug: "pdf-for-lawyers", title: "PDF Tools Every Lawyer Should Know About", date: "2026-02-23", category: "Business", description: "Essential PDF techniques for legal professionals and law firms." },
+    { slug: "batch-pdf-processing", title: "Batch Processing PDFs: How to Handle Multiple Files", date: "2026-02-22", category: "Productivity", description: "Process hundreds of PDFs automatically with batch operations." },
+    { slug: "pdf-color-spaces", title: "Understanding PDF Color Spaces: RGB, CMYK & Beyond", date: "2026-02-21", category: "Technology", description: "A deep dive into color management in PDF documents." },
+    { slug: "pdf-for-marketing", title: "Using PDFs in Marketing: Brochures, Flyers & More", date: "2026-02-20", category: "Marketing", description: "Create effective marketing materials using PDF documents." },
+    { slug: "pdf-annotations", title: "How to Annotate PDF Documents: Notes, Highlights & Drawing", date: "2026-02-19", category: "How-To", description: "Add comments, highlights, and drawings to your PDF documents." },
+    { slug: "bookmarks-in-pdf", title: "PDF Bookmarks: How to Create and Use Them", date: "2026-02-18", category: "How-To", description: "Create navigable bookmarks in your PDF documents for easy navigation." },
+    { slug: "pdf-linearization", title: "PDF Linearization: Fast Web View Explained", date: "2026-02-17", category: "Technology", description: "Optimize PDFs for fast web viewing with linearization." },
+    { slug: "pdf-standards-comparison", title: "PDF Standards Compared: PDF/A, PDF/X, PDF/UA & More", date: "2026-02-16", category: "Technology", description: "Compare different PDF standards and when to use each one." },
+    { slug: "optimize-pdf-performance", title: "How to Optimize PDF Performance and Loading Speed", date: "2026-02-15", category: "Optimization", description: "Speed up PDF rendering with these optimization techniques." },
+    { slug: "pdf-for-healthcare", title: "PDF Documents in Healthcare: HIPAA Compliance Guide", date: "2026-02-14", category: "Business", description: "Using PDFs securely in healthcare while maintaining HIPAA compliance." },
+    { slug: "merge-images-to-pdf", title: "How to Merge Multiple Images into One PDF", date: "2026-02-13", category: "How-To", description: "Combine photos, scans, and screenshots into a single PDF document." },
+    { slug: "pdf-page-layouts", title: "PDF Page Layouts: Portrait, Landscape & Custom Sizes", date: "2026-02-12", category: "How-To", description: "Understanding and working with different page sizes and orientations in PDFs." },
+    { slug: "pdf-version-history", title: "The History of PDF: From 1993 to 2026", date: "2026-02-11", category: "History", description: "Explore how PDF evolved from Adobe's format to the universal document standard." },
+    { slug: "pdf-hyperlinks", title: "Adding and Managing Hyperlinks in PDF Documents", date: "2026-02-10", category: "How-To", description: "Create internal and external links in your PDF documents." },
+    { slug: "pdf-bookmarks-toc", title: "Creating a Table of Contents in PDF Documents", date: "2026-02-09", category: "How-To", description: "Generate clickable table of contents for long PDF documents." },
+    { slug: "pdf-form-filling", title: "How to Fill Out PDF Forms Online", date: "2026-02-08", category: "How-To", description: "Complete PDF forms quickly without printing using digital tools." },
+    { slug: "pdf-stamp-tool", title: "Using Digital Stamps in PDF Documents", date: "2026-02-07", category: "How-To", description: "Apply approval stamps, date stamps, and custom stamps to PDFs." },
+    { slug: "pdf-editing-basics", title: "PDF Editing Basics: What You Can and Can't Edit", date: "2026-02-06", category: "How-To", description: "Understanding PDF editing capabilities and limitations." },
+    { slug: "pdf-for-accounting", title: "PDF Tools for Accounting and Finance Professionals", date: "2026-02-05", category: "Business", description: "Essential PDF techniques for accountants and financial analysts." },
+    { slug: "bates-numbering-pdf", title: "Bates Numbering in PDFs: Legal Document Management", date: "2026-02-04", category: "Business", description: "Apply Bates numbering to legal and medical PDF documents." },
+    { slug: "pdf-ocr-languages", title: "OCR Support for Multiple Languages in PDFs", date: "2026-02-03", category: "Technology", description: "Use OCR to recognize text in multiple languages from scanned documents." },
+    { slug: "pdf-search-techniques", title: "Advanced Search Techniques in PDF Documents", date: "2026-02-02", category: "How-To", description: "Find information quickly in large PDF files using advanced search." },
+    { slug: "pdf-vs-html", title: "PDF vs HTML: When to Use Each for Documents", date: "2026-02-01", category: "Comparison", description: "Compare PDF and HTML formats for different document delivery needs." },
+    { slug: "pdf-book-creation", title: "How to Create an eBook in PDF Format", date: "2026-01-31", category: "How-To", description: "Design and publish professional eBooks using PDF tools." },
+    { slug: "pdf-for-research", title: "Using PDFs for Academic Research: Tips & Tools", date: "2026-01-30", category: "Education", description: "Manage research papers, annotate findings, and organize PDF libraries." },
+    { slug: "pdf-print-ready", title: "Creating Print-Ready PDFs: A Complete Guide", date: "2026-01-29", category: "How-To", description: "Prepare PDF documents for professional printing with correct settings." },
+    { slug: "pdf-interactive-elements", title: "Adding Interactive Elements to PDF Documents", date: "2026-01-28", category: "How-To", description: "Embed videos, audio, and interactive forms in your PDF files." },
+    { slug: "pdf-batch-conversion", title: "Batch Convert Files to PDF: Images, Word, Excel", date: "2026-01-27", category: "Productivity", description: "Convert hundreds of files to PDF format in one go." },
+    { slug: "pdf-redaction-vs-hiding", title: "PDF Redaction vs Covering: Why the Difference Matters", date: "2026-01-26", category: "Security", description: "Understand why covering text isn't the same as proper redaction." },
+    { slug: "pdf-resume-tips", title: "Creating the Perfect PDF Resume: Tips & Templates", date: "2026-01-25", category: "Career", description: "Design a professional resume in PDF format that stands out." },
+    { slug: "pdf-contract-management", title: "Managing Contracts with PDF: Best Practices", date: "2026-01-24", category: "Business", description: "Streamline contract creation, signing, and storage with PDF tools." },
+    { slug: "pdf-scanning-mobile", title: "Scanning Documents to PDF with Your Phone", date: "2026-01-23", category: "How-To", description: "Turn your smartphone into a portable document scanner." },
+    { slug: "pdf-meeting-notes", title: "Organizing Meeting Notes in PDF Format", date: "2026-01-22", category: "Productivity", description: "Create professional meeting minutes and notes as PDF documents." },
+    { slug: "pdf-invoice-creation", title: "How to Create Professional Invoices as PDFs", date: "2026-01-21", category: "Business", description: "Design and generate PDF invoices for your business." },
+    { slug: "pdf-whitepaper-design", title: "Designing Professional Whitepapers in PDF", date: "2026-01-20", category: "Marketing", description: "Create compelling whitepapers and reports as PDF documents." },
+    { slug: "pdf-catalog-creation", title: "Creating Product Catalogs in PDF Format", date: "2026-01-19", category: "Marketing", description: "Design interactive product catalogs for your business." },
+    { slug: "pdf-letterhead-templates", title: "Creating PDF Letterhead Templates for Your Business", date: "2026-01-18", category: "Business", description: "Design professional letterheads that work perfectly as PDFs." },
+    { slug: "pdf-presentation-export", title: "Exporting Presentations to PDF: Tips & Tricks", date: "2026-01-17", category: "How-To", description: "Convert PowerPoint and Keynote presentations to PDF effectively." },
+    { slug: "pdf-invoice-templates", title: "Free PDF Invoice Templates for Small Businesses", date: "2026-01-16", category: "Business", description: "Ready-to-use PDF invoice templates for freelancers and small businesses." },
+    { slug: "pdf-document-tracking", title: "Tracking PDF Document Views and Downloads", date: "2026-01-15", category: "Analytics", description: "Monitor how your shared PDF documents are being used." },
+    { slug: "pdf-email-attachments", title: "Best Practices for Sending PDFs via Email", date: "2026-01-14", category: "Tips", description: "Optimize PDFs for email delivery and ensure successful sending." },
+    { slug: "pdf-mobile-viewing", title: "Optimizing PDFs for Mobile Viewing", date: "2026-01-13", category: "Optimization", description: "Create PDFs that look great on smartphones and tablets." },
+    { slug: "pdf-translation-guide", title: "Translating PDF Documents: Tools & Techniques", date: "2026-01-12", category: "How-To", description: "Methods for translating PDF content into other languages." },
+    { slug: "pdf-legal-compliance", title: "PDF Compliance: Legal, Accessibility & Industry Standards", date: "2026-01-11", category: "Business", description: "Ensure your PDFs meet legal and industry compliance requirements." },
+    { slug: "pdf-file-organization", title: "Organizing Your PDF File Library: A Systematic Approach", date: "2026-01-10", category: "Productivity", description: "Build a system to manage thousands of PDF documents efficiently." },
+    { slug: "pdf-digital-nomad", title: "PDF Tools for Digital Nomads and Remote Workers", date: "2026-01-09", category: "Productivity", description: "Essential PDF tools for professionals working from anywhere." },
+    { slug: "pdf-student-guide", title: "The Student's Guide to PDF Tools and Tips", date: "2026-01-08", category: "Education", description: "How students can use PDF tools for studying, research, and assignments." },
+    { slug: "pdf-resume-optimization", title: "Optimizing Your PDF Resume for ATS Systems", date: "2026-01-07", category: "Career", description: "Create ATS-friendly PDF resumes that pass automated screening." },
+    { slug: "pdf-collaboration", title: "Collaborating on PDF Documents: Review & Markup Tools", date: "2026-01-06", category: "Productivity", description: "Share and collaborate on PDFs with team members effectively." },
+    { slug: "pdf-image-extraction", title: "How to Extract Images from PDF Documents", date: "2026-01-05", category: "How-To", description: "Save photos, diagrams, and graphics from PDF files." },
+    { slug: "pdf-text-extraction", title: "Extracting Text from PDF Documents: Multiple Methods", date: "2026-01-04", category: "How-To", description: "Copy text from PDFs including from scanned documents." },
+    { slug: "pdf-to-excel-conversion", title: "How to Convert PDF Tables to Excel Spreadsheets", date: "2026-01-03", category: "How-To", description: "Extract tabular data from PDFs into editable Excel format." },
+    { slug: "pdf-to-powerpoint-conversion", title: "Converting PDF to PowerPoint: Create Editable Slides", date: "2026-01-02", category: "How-To", description: "Transform PDF presentations into editable PowerPoint files." },
+    { slug: "pdf-font-issues", title: "Solving Common PDF Font Problems and Substitution Issues", date: "2026-01-01", category: "Troubleshooting", description: "Fix font rendering issues and ensure consistent PDF appearance." },
+    { slug: "pdf-size-limitations", title: "Understanding PDF File Size Limitations and Solutions", date: "2025-12-31", category: "Technology", description: "Work around PDF size limits and optimize large documents." },
+    { slug: "pdf-color-profiles", title: "Color Profiles in PDFs: RGB vs CMYK Explained", date: "2025-12-30", category: "Technology", description: "Understand color management for screen and print PDF documents." },
+    { slug: "pdf-vector-graphics", title: "Working with Vector Graphics in PDF Documents", date: "2025-12-29", category: "Technology", description: "Create and edit crisp vector graphics in PDF format." },
+    { slug: "pdf-link-management", title: "Managing Links and Bookmarks in PDF Documents", date: "2025-12-28", category: "How-To", description: "Create, edit, and verify hyperlinks in your PDF files." },
+    { slug: "pdf-flatten-forms", title: "How to Flatten PDF Forms and Lock Responses", date: "2025-12-27", category: "How-To", description: "Convert interactive form fields to static content in PDFs." },
+    { slug: "pdf-bates-stamping", title: "Bates Stamping PDFs for Legal Document Management", date: "2025-12-26", category: "Business", description: "Apply sequential numbering to legal and medical documents." },
+    { slug: "pdf-proposal-creation", title: "Creating Winning Business Proposals as PDF Documents", date: "2025-12-25", category: "Business", description: "Design persuasive proposals that close deals." },
+    { slug: "pdf-report-design", title: "Designing Professional Reports in PDF Format", date: "2025-12-24", category: "Business", description: "Create polished annual reports, project reports, and analyses." },
+    { slug: "pdf-privacy-policies", title: "Creating Privacy Policies and Terms of Service as PDFs", date: "2025-12-23", category: "Legal", description: "Format legal documents professionally in PDF for your business." },
+    { slug: "pdf-convert-to-image", title: "How to Convert PDF Pages to JPG, PNG Images", date: "2025-12-22", category: "How-To", description: "Extract and save individual PDF pages as image files." },
+    { slug: "pdf-document-signing", title: "How to Sign PDF Documents Digitally", date: "2025-12-21", category: "How-To", description: "Add electronic signatures to contracts and agreements in PDF." },
+    { slug: "pdf-business-cards", title: "Creating PDF Business Card Templates", date: "2025-12-20", category: "Design", description: "Design professional business cards that print perfectly from PDF." },
+    { slug: "pdf-flyer-design", title: "Designing Marketing Flyers in PDF Format", date: "2025-12-19", category: "Marketing", description: "Create eye-catching flyers and promotional materials as PDFs." },
+    { slug: "pdf-certificate-creation", title: "Creating Certificates and Awards as PDF Documents", date: "2025-12-18", category: "Design", description: "Design professional certificates for achievements and completion." },
+    { slug: "pdf-event-programs", title: "Creating Event Programs and Schedules as PDFs", date: "2025-12-17", category: "Events", description: "Design professional event programs for conferences and meetings." },
+    { slug: "pdf-menu-design", title: "Designing Restaurant Menus in PDF Format", date: "2025-12-16", category: "Design", description: "Create attractive restaurant and cafe menus as PDF documents." },
+    { slug: "pdf-photo-album", title: "Creating Digital Photo Albums in PDF Format", date: "2025-12-15", category: "Design", description: "Compile your photos into beautiful PDF photo albums." },
+  ];
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<BlogLayout
+  title={post.title}
+  description={post.description}
+  date={post.date}
+  category={post.category}
+>
+  <div class="bg-white">
+    <article class="mx-auto max-w-3xl px-4 py-16">
+      <header class="mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            {post.category}
+          </span>
+          <time class="text-sm text-gray-500">{post.date}</time>
+        </div>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          {post.title}
+        </h1>
+        <p class="text-xl text-gray-600">
+          {post.description}
+        </p>
+      </header>
+
+      <div class="prose prose-lg max-w-none">
+        <p class="text-gray-700">
+          Content coming soon. This is a placeholder for the full blog post content.
+        </p>
+      </div>
+
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <a
+          href="/blog"
+          class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+        >
+          ← Back to Blog
+        </a>
+      </footer>
+    </article>
+  </div>
+</BlogLayout>

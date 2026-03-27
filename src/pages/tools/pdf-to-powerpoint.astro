@@ -25,7 +25,7 @@ const articleContent = `
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 			<div class="lg:col-span-2">
-				<div id="tool-mount" data-tool="PDFToPowerPoint" client:load>
+				<div id="tool-mount">
 					<div class="flex items-center justify-center min-h-[300px]">
 						<div class="text-center">
 							<div class="size-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
@@ -44,7 +44,10 @@ const articleContent = `
 <script>
 	import { createElement } from "react";
 	import { createRoot } from "react-dom/client";
-	import PlaceholderTool from "../../tools/PlaceholderTool";
+	import PDFToPowerPoint from "../../tools/PDFToPowerPoint";
+
 	const mount = document.getElementById("tool-mount");
-	if (mount) { const root = createRoot(mount); root.render(createElement(PlaceholderTool, { toolName: "Convert to PowerPoint", acceptFormats: [".pdf"], description: "PDF to PowerPoint conversion is coming soon!" })); }
+	if (mount) {
+		createRoot(mount).render(createElement(PDFToPowerPoint));
+	}
 </script>
